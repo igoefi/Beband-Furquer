@@ -23,10 +23,14 @@ public class UnitLogic : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (_enemy == null && _friendBuild == null) return;
+        if (_enemy == null && _friendBuild == null && _agent.remainingDistance <= _agent.stoppingDistance)
+        {
+            GetComponent<UnitVision>().enabled = true;
+            return;
+        }
 
         var enemy = (Stats)_enemy;
-        if(enemy.IsDestroyed())
+        if (enemy.IsDestroyed())
         {
             SetActiveFalse(true);
             return;
@@ -49,6 +53,7 @@ public class UnitLogic : MonoBehaviour
         if (_friendBuild != null || _enemy != null)
         {
             _isActive = true;
+
             if (_friendBuild != null)
                 IsCameToBuild.Invoke(_friendBuild);
             else
@@ -60,14 +65,17 @@ public class UnitLogic : MonoBehaviour
     public void SetTarget(Vector3 point)
     {
         _agent.SetDestination(point);
+        _agent.stoppingDistance = 0;
         _friendBuild = null;
         _enemy = null;
-        SetActiveFalse(false);
+        SetActiveFalse(true);
+        GetComponent<UnitVision>().enabled = false;
     }
 
     public void SetTarget(BuildStats build)
     {
         _agent.SetDestination(build.transform.position);
+        _agent.stoppingDistance = _stats.GetAttackDistance();
         _enemy = null;
         _friendBuild = build;
         SetActiveFalse(false);
@@ -75,6 +83,8 @@ public class UnitLogic : MonoBehaviour
 
     public void SetTarget(IDamagable enemy)
     {
+        _agent.SetDestination(enemy.GetPosition());
+        _agent.stoppingDistance = _stats.GetAttackDistance();
         _enemy = enemy;
         _friendBuild = null;
         SetActiveFalse(false);
@@ -82,17 +92,18 @@ public class UnitLogic : MonoBehaviour
 
     public void SetActiveFalse(bool isResetTargets)
     {
-        IsStopBuilding.Invoke();
-        IsStopAttackingEnemy.Invoke();
-
         if (isResetTargets)
         {
             _enemy = null;
             _friendBuild = null;
+            IsStopBuilding.Invoke();
+            IsStopAttackingEnemy.Invoke();
         }
-
+        else
+        {
+            GetComponent<UnitVision>().enabled = false;
+        }
         _isActive = false;
-        GetComponent<UnitVision>().enabled = true;
     }
 
     #endregion

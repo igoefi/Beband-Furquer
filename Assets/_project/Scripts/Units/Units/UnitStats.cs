@@ -11,11 +11,8 @@ public class UnitStats : Stats
 
     [SerializeField] private NavMeshAgent _agent;
 
-    private void Start()
-    {
-        _agent.speed= _speed;
-        _agent.stoppingDistance = _attackDistance;
-    }
+    private void Start() =>
+        _agent.speed = _speed;
 
     public float GetDamage() =>
         _attackDamage;
@@ -23,4 +20,6 @@ public class UnitStats : Stats
         _timeKD;
     public float GetEyeShot() =>
         _eyeShot;
+    public float GetAttackDistance() =>
+        _attackDistance;
 }

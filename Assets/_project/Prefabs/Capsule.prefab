@@ -172,9 +172,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _isEnemy: 0
   _HP: 2
-  _timeKD: 2
+  _timeKD: 10
   _eyeShot: 20
-  _speed: 1
+  _speed: 5
   _attackDamage: 2
   _attackDistance: 5
   _agent: {fileID: 3231901021428628820}

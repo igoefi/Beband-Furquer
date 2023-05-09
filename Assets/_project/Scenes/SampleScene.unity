@@ -345,7 +345,7 @@ MonoBehaviour:
   _timeKD: 2
   _eyeShot: 20
   _speed: 1
-  _attackDamage: 1
+  _attackDamage: 0
   _attackDistance: 4
   _agent: {fileID: 356889373}
 --- !u!114 &356889381
@@ -711,7 +711,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh23958
+  m_Name: pb_Mesh23962
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
