@@ -15,20 +15,24 @@ public class SimpleUnitAttack : MonoBehaviour
         _logic.IsStopAttackingEnemy.AddListener(EndAttack);
     }
 
-    private void StartAttack(EnemyUnit enemy) =>
-        _attackCorutine = StartCoroutine(Attack(enemy.GetComponent<UnitStats>()));
+    private void StartAttack(IDamagable enemy) =>
+        _attackCorutine = StartCoroutine(Attack(enemy));
 
-    private void EndAttack() =>
-        StopCoroutine(_attackCorutine);
+    private void EndAttack() 
+    { 
+        if(_attackCorutine != null)
+            StopCoroutine(_attackCorutine);
+    }
 
     private IEnumerator Attack(IDamagable enemy)
     {
         while (true)
         {
             if (enemy == null) break;
-                
-            if(enemy.MakeDamage(_stats.GetDamage())) break;
+
+            if (enemy.MakeDamage(_stats.GetDamage())) break;
             yield return new WaitForSeconds(_stats.GetKD());
         }
+        _logic.SetActiveFalse(true);
     }
 }

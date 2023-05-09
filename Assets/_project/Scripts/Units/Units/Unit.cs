@@ -1,9 +1,11 @@
 using UnityEngine;
+using UnityEngine.AI;
 
-public class EnemyUnit : MonoBehaviour
+public class Unit : MonoBehaviour
 {
-    [SerializeField] protected AudioClip _clip;
     [SerializeField] protected AudioSource _source;
+    [SerializeField] protected AudioClip _clip;
+
     public void Click()
     {
         _source.Stop();

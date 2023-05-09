@@ -2,16 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BuildStats : MonoBehaviour, IDamagable
+public class Stats : MonoBehaviour, IDamagable
 {
-    [SerializeField] bool _isEnemy;
-    [SerializeField] float _HP;
-    [SerializeField] float _needPointToBuild;
+    [SerializeField] protected bool _isEnemy;
+
+    [SerializeField] protected float _HP;
+    [SerializeField] protected float _timeKD;
+
+    public bool IsEnemy() =>
+        _isEnemy;
 
     public bool MakeDamage(float damage)
     {
-        _HP *= damage;
-        Debug.Log(_HP);
+        _HP -= damage;
+        Debug.Log("HP " + _HP);
         if (_HP <= 0)
         {
             Destroy(gameObject);
@@ -23,6 +27,4 @@ public class BuildStats : MonoBehaviour, IDamagable
     public Vector3 GetPosition() =>
         transform.position;
 
-    public bool IsEnemy() =>
-        _isEnemy;
 }

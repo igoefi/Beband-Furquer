@@ -4,7 +4,7 @@ public class SelectClickPoint : MonoBehaviour
 {
     [SerializeField] private Camera cam;
 
-    private Unit _selectedUnit;
+    private FriendUnit _selectedUnit;
     private void Update()
     {
         if (Input.GetMouseButton(1))
@@ -20,8 +20,7 @@ public class SelectClickPoint : MonoBehaviour
             var obj = hit.collider.gameObject;
 
             var unit = obj.GetComponent<Unit>();
-            var build = obj.GetComponent<Build>();
-            var enemy = obj.GetComponent<EnemyUnit>();
+            var build = obj.GetComponent<BuildStats>();
 
             if (unit != null)
                 SetUnit(unit);
@@ -30,13 +29,7 @@ public class SelectClickPoint : MonoBehaviour
                 if (_selectedUnit != null)
                     _selectedUnit.SetPointToGo(build);
                 else
-                    build.Click();
-
-            else if (enemy != null)
-                if (_selectedUnit != null)
-                    _selectedUnit.SetPointToGo(enemy);
-                else
-                    enemy.Click();
+                    build.GetComponent<Unit>().Click();
 
             else
                 if (_selectedUnit != null)
@@ -46,7 +39,14 @@ public class SelectClickPoint : MonoBehaviour
 
     private void SetUnit(Unit unit)
     {
-        _selectedUnit = unit;
+        var stats = unit.GetComponent<UnitStats>();
+
+        if (!stats.IsEnemy())
+            _selectedUnit = (FriendUnit)unit;
+        else
+            if (_selectedUnit != null)
+                _selectedUnit.SetPointToGo(unit.GetComponent<UnitStats>());
+
         unit.Click();
     }
 }

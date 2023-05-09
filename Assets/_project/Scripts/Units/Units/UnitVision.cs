@@ -24,7 +24,7 @@ public class UnitVision : MonoBehaviour
         var enemy = GetNearEnemy(RayToScan());
         if (enemy == null) return;
 
-        GetComponent<UnitLogic>().SetTarget(enemy.GetPosition());
+        GetComponent<UnitLogic>().SetTarget(enemy);
 
         enabled = false;
     }
