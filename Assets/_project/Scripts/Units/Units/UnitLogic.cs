@@ -92,12 +92,12 @@ public class UnitLogic : MonoBehaviour
 
     public void SetActiveFalse(bool isResetTargets)
     {
+        IsStopBuilding.Invoke();
+        IsStopAttackingEnemy.Invoke();
         if (isResetTargets)
         {
             _enemy = null;
             _friendBuild = null;
-            IsStopBuilding.Invoke();
-            IsStopAttackingEnemy.Invoke();
         }
         else
         {

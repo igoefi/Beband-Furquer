@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -13,9 +14,11 @@ public class UnitStats : Stats
 
     private void Start() =>
         _agent.speed = _speed;
-
-    public float GetDamage() =>
-        _attackDamage;
+    public float GetDamageToAttack()
+    {
+        StartCoroutine(ResetReady());
+        return _attackDamage;
+    }
     public float GetKD() =>
         _timeKD;
     public float GetEyeShot() =>

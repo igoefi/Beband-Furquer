@@ -30,8 +30,10 @@ public class SimpleUnitAttack : MonoBehaviour
         {
             if (enemy == null) break;
 
-            if (enemy.MakeDamage(_stats.GetDamage())) break;
-            yield return new WaitForSeconds(_stats.GetKD());
+
+            if (_stats.IsReadyToAction() && enemy.MakeDamage(_stats.GetDamageToAttack())) break;
+
+            yield return new WaitWhile(() => _stats.IsReadyToAction());
         }
         _logic.SetActiveFalse(true);
     }

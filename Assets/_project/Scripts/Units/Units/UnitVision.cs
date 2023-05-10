@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class UnitVision : MonoBehaviour
 {
-
     [SerializeField] int _rays = 8;
     private float _distance;
     [SerializeField] float _angle = 90;
@@ -17,20 +16,20 @@ public class UnitVision : MonoBehaviour
         var stats = GetComponent<UnitStats>();
         _distance = stats.GetEyeShot();
         _isEnemy = stats.IsEnemy();
+        GetComponent<UnitStats>().IsMeAttacking.AddListener(SeeAttacker);
     }
 
     void FixedUpdate()
     {
-        var enemy = GetNearEnemy(RayToScan());
+        var enemy = GetNearEnemy(RayToScan(false));
         if (enemy == null) return;
 
         GetComponent<UnitLogic>().SetTarget(enemy);
-
         enabled = false;
     }
 
     #region Raycasting
-    private List<IDamagable> RayToScan()
+    private List<IDamagable> RayToScan(bool isAttacking)
     {
         float j = 0;
 
@@ -41,7 +40,7 @@ public class UnitVision : MonoBehaviour
             var sin = Mathf.Sin(j);
             var cos = Mathf.Cos(j);
 
-            j += _angle * Mathf.Deg2Rad / _rays;
+            j += isAttacking ? 180 : _angle * Mathf.Deg2Rad / _rays;
 
             Vector3 direction = transform.TransformDirection(new Vector3(sin, 0, cos));
 
@@ -101,5 +100,15 @@ public class UnitVision : MonoBehaviour
                 needEnemy = enemy;
         }
         return needEnemy;
+    }
+
+    private void SeeAttacker()
+    {
+        if (!enabled) return;
+        var enemy = GetNearEnemy(RayToScan(true));
+        if (enemy == null) return;
+
+        GetComponent<UnitLogic>().SetTarget(enemy);
+        enabled = false;
     }
 }
