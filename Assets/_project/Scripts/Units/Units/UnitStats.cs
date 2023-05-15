@@ -10,10 +10,14 @@ public class UnitStats : Stats
     [SerializeField] private float _attackDamage;
     [SerializeField] private float _attackDistance;
 
-    [SerializeField] private NavMeshAgent _agent;
+    private NavMeshAgent _agent;
 
-    private void Start() =>
+    private void Start()
+    {
+        _agent = GetComponent<NavMeshAgent>();
         _agent.speed = _speed;
+    }
+
     public float GetDamageToAttack()
     {
         StartCoroutine(ResetReady());

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -21,7 +22,8 @@ public class Stats : MonoBehaviour, IDamagable
         _HP -= damage;
         if (_HP <= 0)
         {
-            Destroy(gameObject);
+            if(!gameObject.IsDestroyed())
+                Destroy(gameObject);
             return true;
         }
         IsMeAttacking.Invoke();
@@ -36,10 +38,8 @@ public class Stats : MonoBehaviour, IDamagable
 
     protected IEnumerator ResetReady()
     {
-        Debug.Log("start");
         _isReadyToAction = false;
         yield return new WaitForSeconds(_timeKD);
-        Debug.Log("end");
         _isReadyToAction = true;
     }
 

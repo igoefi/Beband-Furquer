@@ -12,20 +12,32 @@ public class UnitLogic : MonoBehaviour
     public UnityEvent<IDamagable> IsCameToEnemy { get; private set; } = new();
     public UnityEvent IsStopAttackingEnemy { get; private set; } = new();
 
-    [SerializeField] private NavMeshAgent _agent;
-
-    [SerializeField] private UnitStats _stats;
+    private NavMeshAgent _agent;
+    private UnitStats _stats;
+    private Animator _anim;
 
     private BuildStats _friendBuild;
     private IDamagable _enemy;
 
     private bool _isActive = false;
 
+    private const string _animRunNameBool = "IsRun";
+    private const string _animAttackNameTrigger = "IsAttack";
+    private const string _animEndAttackNameTrigger = "IsEndAttack";
+
+    private void Start()
+    {
+        _stats = GetComponent<UnitStats>();
+        _agent = GetComponent<NavMeshAgent>();
+        _anim = GetComponent<Animator>();
+    }
+
     private void FixedUpdate()
     {
         if (_enemy == null && _friendBuild == null && _agent.remainingDistance <= _agent.stoppingDistance)
         {
             GetComponent<UnitVision>().enabled = true;
+            _anim.SetBool(_animRunNameBool, false);
             return;
         }
 
@@ -33,15 +45,20 @@ public class UnitLogic : MonoBehaviour
         if (enemy.IsDestroyed())
         {
             SetActiveFalse(true);
+            _anim.SetBool(_animRunNameBool, false);
+            _anim.SetTrigger(_animEndAttackNameTrigger);
             return;
         }
 
         if (_enemy != null)
+        {
             _agent.SetDestination(_enemy.GetPosition());
+        }
 
         if (_agent.remainingDistance > _agent.stoppingDistance && _isActive)
         {
             _isActive = false;
+            _anim.SetBool(_animRunNameBool, true);
             return;
         }
 
@@ -54,6 +71,7 @@ public class UnitLogic : MonoBehaviour
         {
             _isActive = true;
 
+            _anim.SetTrigger(_animAttackNameTrigger);
             if (_friendBuild != null)
                 IsCameToBuild.Invoke(_friendBuild);
             else
@@ -70,6 +88,7 @@ public class UnitLogic : MonoBehaviour
         _enemy = null;
         SetActiveFalse(true);
         GetComponent<UnitVision>().enabled = false;
+        _anim.SetBool(_animRunNameBool, true);
     }
 
     public void SetTarget(BuildStats build)
@@ -98,10 +117,12 @@ public class UnitLogic : MonoBehaviour
         {
             _enemy = null;
             _friendBuild = null;
+            _anim.SetTrigger(_animEndAttackNameTrigger);
         }
         else
         {
             GetComponent<UnitVision>().enabled = false;
+            _anim.SetBool(_animRunNameBool, true);
         }
         _isActive = false;
     }

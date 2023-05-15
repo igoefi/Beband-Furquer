@@ -4,13 +4,16 @@ using UnityEngine;
 
 public class SimpleUnitAttack : MonoBehaviour
 {
-    [SerializeField] UnitStats _stats;
-    [SerializeField] UnitLogic _logic;
+    private UnitStats _stats;
+    private UnitLogic _logic;
 
     private Coroutine _attackCorutine;
 
     private void Start()
     {
+        _stats = GetComponent<UnitStats>();
+        _logic = GetComponent<UnitLogic>();
+
         _logic.IsCameToEnemy.AddListener(StartAttack);
         _logic.IsStopAttackingEnemy.AddListener(EndAttack);
     }
@@ -30,7 +33,7 @@ public class SimpleUnitAttack : MonoBehaviour
         {
             if (enemy == null) break;
 
-
+            //transform.LookAt(enemy.GetPosition());
             if (_stats.IsReadyToAction() && enemy.MakeDamage(_stats.GetDamageToAttack())) break;
 
             yield return new WaitWhile(() => _stats.IsReadyToAction());

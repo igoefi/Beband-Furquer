@@ -4,7 +4,7 @@ public class SelectClickPoint : MonoBehaviour
 {
     [SerializeField] private Camera cam;
 
-    private FriendUnit _selectedUnit;
+    private Unit _selectedUnit;
     private void Update()
     {
         if (Input.GetMouseButton(1))
@@ -42,7 +42,7 @@ public class SelectClickPoint : MonoBehaviour
         var stats = unit.GetComponent<UnitStats>();
 
         if (!stats.IsEnemy())
-            _selectedUnit = (FriendUnit)unit;
+            _selectedUnit = unit;
         else
             if (_selectedUnit != null)
                 _selectedUnit.SetPointToGo(unit.GetComponent<UnitStats>());
