@@ -4,15 +4,45 @@ using UnityEngine;
 
 public class HelicopterAttack : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] List<Transform> _placesForRockets;
+    [SerializeField] Rocket _rocketPrefab;
+
+    private Coroutine _attackCorutine;
+    private UnitStats _stats;
+    private UnitLogic _logic;
+
+    private void Start()
     {
-        
+        _stats = GetComponent<UnitStats>();
+        _logic = GetComponent<UnitLogic>();
+
+        _logic.IsCameToEnemy.AddListener(StartAttack);
+        _logic.IsStopAttackingEnemy.AddListener(EndAttack);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void StartAttack(IDamagable enemy) =>
+    _attackCorutine = StartCoroutine(Attack(enemy));
+
+    private void EndAttack()
     {
-        
+        if (_attackCorutine != null)
+            StopCoroutine(_attackCorutine);
+    }
+
+    private IEnumerator Attack(IDamagable enemy)
+    {
+        yield return new WaitWhile(() => !_stats.IsReadyToAction());
+
+        if (enemy != null)
+        {
+            foreach(var place in _placesForRockets)
+            {
+                var obj = Instantiate(_rocketPrefab.gameObject, place.position, transform.rotation, transform.parent)
+                    .GetComponent<Rocket>();
+                obj.SetTarget(enemy.GetPosition(), _stats.GetDamageToAttack(), _stats.IsEnemy());
+            }
+        }
+
+        _logic.SetActiveFalse(true);
     }
 }

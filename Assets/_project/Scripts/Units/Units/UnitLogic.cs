@@ -113,6 +113,7 @@ public class UnitLogic : MonoBehaviour
     {
         IsStopBuilding.Invoke();
         IsStopAttackingEnemy.Invoke();
+        GetComponent<UnitVision>().enabled = true;
         if (isResetTargets)
         {
             _enemy = null;

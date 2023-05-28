@@ -36,7 +36,7 @@ public class SimpleUnitAttack : MonoBehaviour
             //transform.LookAt(enemy.GetPosition());
             if (_stats.IsReadyToAction() && enemy.MakeDamage(_stats.GetDamageToAttack())) break;
 
-            yield return new WaitWhile(() => _stats.IsReadyToAction());
+            yield return new WaitWhile(() => !_stats.IsReadyToAction());
         }
         _logic.SetActiveFalse(true);
     }

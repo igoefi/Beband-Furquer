@@ -640,12 +640,12 @@ GameObject:
   - component: {fileID: 7596424909616869159}
   - component: {fileID: 7596424909616869156}
   - component: {fileID: 7596424909616869157}
-  - component: {fileID: 7596424909616869154}
   - component: {fileID: 7596424909616869155}
   - component: {fileID: 7596424909616869152}
   - component: {fileID: 7596424909616869153}
   - component: {fileID: 7596424909616869161}
   - component: {fileID: 7596424909616869158}
+  - component: {fileID: 2118853343867625952}
   m_Layer: 0
   m_Name: HelicopterFriend
   m_TagString: Untagged
@@ -714,18 +714,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8fc1b9952d327424d902931bbc39620e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &7596424909616869154
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7596424909616869182}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a08f96dc386eb04783d786b671ea59a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!195 &7596424909616869155
@@ -810,6 +798,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 7, y: 3.4, z: 7}
   m_Center: {x: 0, y: 1.44, z: 0}
+--- !u!114 &2118853343867625952
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7596424909616869182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15a05bd7680be0545814387aae1452cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _placesForRockets:
+  - {fileID: 2417559590342962755}
+  - {fileID: 5599586053281898502}
+  _rocketPrefab: {fileID: 1438395462, guid: cd35f20be7ac0f142bb631ebe20d2ef0, type: 3}
 --- !u!1 &7596424909698264171
 GameObject:
   m_ObjectHideFlags: 0
@@ -1753,6 +1757,8 @@ Transform:
   - {fileID: 7596424909477373141}
   - {fileID: 7596424910752840128}
   - {fileID: 7596424910012001348}
+  - {fileID: 2417559590342962755}
+  - {fileID: 5599586053281898502}
   m_Father: {fileID: 7596424909022701914}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1933,3 +1939,65 @@ Transform:
   m_Father: {fileID: 7596424910447511883}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: -0.049, y: -179.404, z: -63.661}
+--- !u!1 &8432636587975972114
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2417559590342962755}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2417559590342962755
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8432636587975972114}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7596424910775810758}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &9113135940021971056
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5599586053281898502}
+  m_Layer: 0
+  m_Name: RightRocket
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5599586053281898502
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9113135940021971056}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 223, y: 107.990456, z: 98.1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7596424910775810758}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
