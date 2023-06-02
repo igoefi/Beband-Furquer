@@ -34,25 +34,17 @@ public class Rocket : MonoBehaviour
 
     private void Attack()
     {
-        if (_explosion != null)
-        {
-            _explosion.transform.parent = transform.parent;
-            _explosion.Play();
-        }
+        _explosion.gameObject.SetActive(true);
+        _explosion.transform.parent = transform.parent;
+        _explosion.Play();
 
         var raycasts = Physics.SphereCastAll(transform.position, _explosiomRadius, transform.position);
 
         foreach (var cast in raycasts)
             if (cast.collider.TryGetComponent(out Stats unit))
-                if(unit.IsEnemy() ^ _isEnemy)
+                if (unit.IsEnemy() ^ _isEnemy)
                     unit.MakeDamage(_damage);
 
         Destroy(gameObject);
-    }
-
-    private IEnumerator ExplosionDead()
-    {
-        yield return new WaitWhile(() => _explosion.isPlaying);
-        Destroy(_explosion.gameObject);
     }
 }

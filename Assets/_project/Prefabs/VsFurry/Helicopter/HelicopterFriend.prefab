@@ -698,8 +698,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _isEnemy: 0
-  _HP: 200
-  _timeKD: 3
+  _HP: 500
+  _timeKD: 8
   _eyeShot: 80
   _speed: 40
   _attackDamage: 120

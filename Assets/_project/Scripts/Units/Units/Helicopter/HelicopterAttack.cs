@@ -32,7 +32,7 @@ public class HelicopterAttack : MonoBehaviour
     private IEnumerator Attack(IDamagable enemy)
     {
         yield return new WaitWhile(() => !_stats.IsReadyToAction());
-
+        transform.LookAt(enemy.GetPosition());
         if (enemy != null)
         {
             foreach(var place in _placesForRockets)
