@@ -34,10 +34,14 @@ public class UnitLogic : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if(_agent.remainingDistance <= _agent.stoppingDistance)
+        {
+            _anim.SetBool(_animRunNameBool, false);
+        }
+
         if (_enemy == null && _friendBuild == null && _agent.remainingDistance <= _agent.stoppingDistance)
         {
             GetComponent<UnitVision>().enabled = true;
-            _anim.SetBool(_animRunNameBool, false);
             return;
         }
 
@@ -51,9 +55,7 @@ public class UnitLogic : MonoBehaviour
         }
 
         if (_enemy != null)
-        {
             _agent.SetDestination(_enemy.GetPosition());
-        }
 
         if (_agent.remainingDistance > _agent.stoppingDistance && _isActive)
         {

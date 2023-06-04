@@ -33,10 +33,10 @@ public class SimpleUnitAttack : MonoBehaviour
         {
             if (enemy == null) break;
 
-            //transform.LookAt(enemy.GetPosition());
-            if (_stats.IsReadyToAction() && enemy.MakeDamage(_stats.GetDamageToAttack())) break;
-
             yield return new WaitWhile(() => !_stats.IsReadyToAction());
+
+            transform.LookAt(enemy.GetPosition());
+            if (_stats.IsReadyToAction() && enemy.MakeDamage(_stats.GetDamageToAttack())) break;
         }
         _logic.SetActiveFalse(true);
     }

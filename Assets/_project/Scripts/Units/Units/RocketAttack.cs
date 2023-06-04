@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
-public class HelicopterAttack : MonoBehaviour
+public class RocketAttack : MonoBehaviour
 {
     [SerializeField] List<Transform> _placesForRockets;
     [SerializeField] Rocket _rocketPrefab;
+
+    [SerializeField] Transform _transformToLookAt;
 
     private Coroutine _attackCorutine;
     private UnitStats _stats;
@@ -21,7 +24,7 @@ public class HelicopterAttack : MonoBehaviour
     }
 
     private void StartAttack(IDamagable enemy) =>
-    _attackCorutine = StartCoroutine(Attack(enemy));
+        _attackCorutine = StartCoroutine(Attack(enemy));
 
     private void EndAttack()
     {
@@ -32,16 +35,18 @@ public class HelicopterAttack : MonoBehaviour
     private IEnumerator Attack(IDamagable enemy)
     {
         yield return new WaitWhile(() => !_stats.IsReadyToAction());
-        transform.LookAt(enemy.GetPosition());
-        if (enemy != null)
+
+        if (_transformToLookAt != null)
         {
+            _transformToLookAt.LookAt(enemy.GetPosition());
+        }
+        if (enemy != null)
             foreach(var place in _placesForRockets)
             {
                 var obj = Instantiate(_rocketPrefab.gameObject, place.position, transform.rotation, transform.parent)
                     .GetComponent<Rocket>();
                 obj.SetTarget(enemy.GetPosition(), _stats.GetDamageToAttack(), _stats.IsEnemy());
             }
-        }
 
         _logic.SetActiveFalse(true);
     }
