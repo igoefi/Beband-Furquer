@@ -29,14 +29,22 @@ public class SimpleUnitAttack : MonoBehaviour
 
     private IEnumerator Attack(IDamagable enemy)
     {
-        while (true)
-        {
-            if (enemy == null) break;
+        if (enemy == null) yield return null;
 
+        bool isAttacking = true;
+        while (isAttacking)
+        {
             yield return new WaitWhile(() => !_stats.IsReadyToAction());
 
-            transform.LookAt(enemy.GetPosition());
-            if (_stats.IsReadyToAction() && enemy.MakeDamage(_stats.GetDamageToAttack())) break;
+            try
+            {
+                transform.LookAt(enemy.GetPosition());
+                if (_stats.IsReadyToAction() && enemy.MakeDamage(_stats.GetDamageToAttack())) break;
+            }
+            catch
+            {
+                isAttacking = false;
+            }
         }
         _logic.SetActiveFalse(true);
     }

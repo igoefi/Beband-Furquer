@@ -43,4 +43,9 @@ public class Stats : MonoBehaviour, IDamagable
         _isReadyToAction = true;
     }
 
+    public void ChangeIsEnemy() =>
+        _isEnemy = !_isEnemy;
+
+    public GameObject GetGameObject() =>
+        gameObject;
 }

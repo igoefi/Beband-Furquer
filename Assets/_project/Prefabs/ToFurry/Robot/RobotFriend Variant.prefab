@@ -7,6 +7,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1917853137581631573, guid: b35ad0e59261de94b929a5437819d4b2, type: 3}
+      propertyPath: _HP
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 1917853137581631573, guid: b35ad0e59261de94b929a5437819d4b2, type: 3}
+      propertyPath: _timeKD
+      value: 1.33
+      objectReference: {fileID: 0}
+    - target: {fileID: 1917853137581631573, guid: b35ad0e59261de94b929a5437819d4b2, type: 3}
+      propertyPath: _eyeShot
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 1917853137581631573, guid: b35ad0e59261de94b929a5437819d4b2, type: 3}
+      propertyPath: _attackDistance
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3961748424795110012, guid: b35ad0e59261de94b929a5437819d4b2, type: 3}
+      propertyPath: _offset.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4138654790052016480, guid: b35ad0e59261de94b929a5437819d4b2, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -51,12 +71,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8391767905562741293, guid: b35ad0e59261de94b929a5437819d4b2, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 267dd9de1f906264eb1f6f63b6217c6d, type: 2}
     - target: {fileID: 8411751347696301432, guid: b35ad0e59261de94b929a5437819d4b2, type: 3}
       propertyPath: m_Name
       value: RobotFriend Variant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b35ad0e59261de94b929a5437819d4b2, type: 3}
+--- !u!1 &2360663958348365954 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8411751347696301432, guid: b35ad0e59261de94b929a5437819d4b2, type: 3}
+  m_PrefabInstance: {fileID: 6088382998417634810}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &6157593036453214075
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2360663958348365954}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 2.59, z: 1}
+  m_Center: {x: 0, y: 1.22, z: 0}
 --- !u!4 &7859129409418101914 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4138654790052016480, guid: b35ad0e59261de94b929a5437819d4b2, type: 3}

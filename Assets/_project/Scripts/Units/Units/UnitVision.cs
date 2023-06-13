@@ -4,24 +4,22 @@ using UnityEngine;
 public class UnitVision : MonoBehaviour
 {
     [SerializeField] int _rays = 8;
-    private float _distance;
     [SerializeField] float _angle = 90;
+    private float _distance;
 
     [SerializeField] Vector3 _offset;
 
-    private bool _isEnemy;
-
+    private UnitStats _stats;
     private void Start()
     {
-        var stats = GetComponent<UnitStats>();
-        _distance = stats.GetEyeShot();
-        _isEnemy = stats.IsEnemy();
-        GetComponent<UnitStats>().IsMeAttacking.AddListener(SeeAttacker);
+        _stats = GetComponent<UnitStats>();
+        _distance = _stats.GetEyeShot();
+        GetComponent<UnitStats>().IsMeAttacking.AddListener(ReactionToAttack);
     }
 
     void FixedUpdate()
     {
-        var enemy = GetNearEnemy(RayToScan(false));
+        var enemy = GetNearEnemy(RayToScan(false, false));
         if (enemy == null) return;
 
         GetComponent<UnitLogic>().SetTarget(enemy);
@@ -29,7 +27,7 @@ public class UnitVision : MonoBehaviour
     }
 
     #region Raycasting
-    private List<IDamagable> RayToScan(bool isAttacking)
+    private List<IDamagable> RayToScan(bool isAttacking, bool isSearchFriend)
     {
         float j = 0;
 
@@ -44,13 +42,13 @@ public class UnitVision : MonoBehaviour
 
             Vector3 direction = transform.TransformDirection(new Vector3(sin, 0, cos));
 
-            var enemy = GetRaycast(direction);
+            var enemy = !isSearchFriend ? GetRaycast(direction) : GetFriendRaycast(direction);
             if (enemy != null) list.Add(enemy);
 
             if (sin != 0)
             {
                 direction = transform.TransformDirection(new Vector3(-sin, 0, cos));
-                enemy = GetRaycast(direction);
+                enemy = !isSearchFriend ? GetRaycast(direction) : GetFriendRaycast(direction);
                 if (enemy != null) list.Add(enemy);
             }
         }
@@ -67,9 +65,28 @@ public class UnitVision : MonoBehaviour
             var build = hit.collider.gameObject.GetComponent<BuildStats>();
             var unit = hit.collider.gameObject.GetComponent<UnitStats>();
 
-            if (build != null && (build.IsEnemy() ^ _isEnemy))
+            if (build != null && (build.IsEnemy() ^ _stats.IsEnemy()))
                 return build;
-            else if (unit != null && (unit.IsEnemy() ^ _isEnemy))
+            else if (unit != null && (unit.IsEnemy() ^ _stats.IsEnemy()))
+                return unit;
+        }
+        else
+        {
+            Debug.DrawRay(pos, dir * _distance, Color.red);
+        }
+        return null;
+    }
+
+    private IDamagable GetFriendRaycast(Vector3 dir)
+    {
+        Vector3 pos = transform.position + _offset;
+        if (Physics.Raycast(pos, dir, out RaycastHit hit, _distance))
+        {
+            Debug.DrawLine(pos, hit.point, Color.blue);
+
+            var unit = hit.collider.gameObject.GetComponent<UnitStats>();
+
+            if (unit != null && (!unit.IsEnemy() ^ _stats.IsEnemy()))
                 return unit;
         }
         else
@@ -102,13 +119,29 @@ public class UnitVision : MonoBehaviour
         return needEnemy;
     }
 
-    private void SeeAttacker()
+    public void ReactionToAttack()
     {
         if (!enabled) return;
-        var enemy = GetNearEnemy(RayToScan(true));
-        if (enemy == null) return;
+
+        SayFriendsAboutEnemy(SeeAttacker());
+        enabled = false;
+    }
+
+    private IDamagable SeeAttacker()
+    {
+        var enemy = GetNearEnemy(RayToScan(true, false));
+        if (enemy == null) return null;
 
         GetComponent<UnitLogic>().SetTarget(enemy);
-        enabled = false;
+        return enemy;
+    }
+
+    private void SayFriendsAboutEnemy(IDamagable enemy)
+    {
+        if (enemy == null) return;
+        var friends = RayToScan(true, true);
+
+        foreach (var frind in friends)
+            frind.GetGameObject().GetComponent<UnitVision>().ReactionToAttack();
     }
 }

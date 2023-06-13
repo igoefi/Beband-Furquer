@@ -4,10 +4,7 @@ using UnityEngine;
 
 public class PuroAttack : MonoBehaviour
 {
-    [SerializeField] List<Transform> _placesForRockets;
-    [SerializeField] Rocket _rocketPrefab;
-
-    [SerializeField] Transform _transformToLookAt;
+    [SerializeField] Transform _transformFromLookAt;
 
     private Coroutine _attackCorutine;
     private UnitStats _stats;
@@ -35,17 +32,12 @@ public class PuroAttack : MonoBehaviour
     {
         yield return new WaitWhile(() => !_stats.IsReadyToAction());
 
-        if (_transformToLookAt != null)
-        {
-            _transformToLookAt.LookAt(enemy.GetPosition());
-        }
-        if (enemy != null)
-            foreach (var place in _placesForRockets)
-            {
-                var obj = Instantiate(_rocketPrefab.gameObject, place.position, transform.rotation, transform.parent)
-                    .GetComponent<Rocket>();
-                obj.SetTarget(enemy.GetPosition(), _stats.GetDamageToAttack(), _stats.IsEnemy());
-            }
+        _stats.GetDamageToAttack();
+
+        if (_transformFromLookAt != null)
+            _transformFromLookAt.LookAt(enemy.GetPosition());
+
+        enemy?.ChangeIsEnemy();
 
         _logic.SetActiveFalse(true);
     }

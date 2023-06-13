@@ -120,9 +120,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8391767905562741293, guid: b35ad0e59261de94b929a5437819d4b2, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 751c0242f8350a04f9974dfa897912f9, type: 2}
     - target: {fileID: 8411751347696301432, guid: b35ad0e59261de94b929a5437819d4b2, type: 3}
       propertyPath: m_Name
-      value: RoboBunnyFriend
+      value: RoboBunnyFriend Variant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b35ad0e59261de94b929a5437819d4b2, type: 3}
