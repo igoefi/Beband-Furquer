@@ -19,7 +19,7 @@ public class RocketAttack : MonoBehaviour
         _stats = GetComponent<UnitStats>();
         _logic = GetComponent<UnitLogic>();
 
-        _logic.IsCameToEnemy.AddListener(StartAttack);
+        _logic.IsStartAttackingEnemy.AddListener(StartAttack);
         _logic.IsStopAttackingEnemy.AddListener(EndAttack);
     }
 
@@ -36,17 +36,19 @@ public class RocketAttack : MonoBehaviour
     {
         yield return new WaitWhile(() => !_stats.IsReadyToAction());
 
-        if (_transformToLookAt != null)
+        try
         {
-            _transformToLookAt.LookAt(enemy.GetPosition());
-        }
-        if (enemy != null)
-            foreach(var place in _placesForRockets)
+            if (_transformToLookAt != null)
+                _transformToLookAt.LookAt(enemy.GetPosition());
+
+            foreach (var place in _placesForRockets)
             {
-                var obj = Instantiate(_rocketPrefab.gameObject, place.position, transform.rotation, transform.parent)
+                var obj = Instantiate(_rocketPrefab.gameObject, place.position, place.rotation, transform.parent)
                     .GetComponent<Rocket>();
                 obj.SetTarget(enemy.GetPosition(), _stats.GetDamageToAttack(), _stats.IsEnemy());
             }
+        }
+        catch { }
 
         _logic.SetActiveFalse(true);
     }

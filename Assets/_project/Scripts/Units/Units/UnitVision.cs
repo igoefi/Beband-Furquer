@@ -13,7 +13,7 @@ public class UnitVision : MonoBehaviour
     private void Start()
     {
         _stats = GetComponent<UnitStats>();
-        _distance = _stats.GetEyeShot();
+        _distance = _stats.EyeShot;
         GetComponent<UnitStats>().IsMeAttacking.AddListener(ReactionToAttack);
     }
 

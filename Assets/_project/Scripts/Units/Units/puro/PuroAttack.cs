@@ -15,7 +15,7 @@ public class PuroAttack : MonoBehaviour
         _stats = GetComponent<UnitStats>();
         _logic = GetComponent<UnitLogic>();
 
-        _logic.IsCameToEnemy.AddListener(StartAttack);
+        _logic.IsStartAttackingEnemy.AddListener(StartAttack);
         _logic.IsStopAttackingEnemy.AddListener(EndAttack);
     }
 

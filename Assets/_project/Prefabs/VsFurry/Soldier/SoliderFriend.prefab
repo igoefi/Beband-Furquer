@@ -1343,6 +1343,7 @@ GameObject:
   - component: {fileID: 3977861742532416426}
   - component: {fileID: 3977861742532416425}
   - component: {fileID: 3977861742532416424}
+  - component: {fileID: 4664883480484568496}
   m_Layer: 0
   m_Name: SoliderFriend
   m_TagString: Untagged
@@ -1426,6 +1427,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a08f96dc386eb04783d786b671ea59a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _transformToLookAt: {fileID: 3977861742532416336}
 --- !u!195 &3977861742532416427
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1496,6 +1498,18 @@ CapsuleCollider:
   m_Height: 3
   m_Direction: 1
   m_Center: {x: 0, y: 1.42, z: 0}
+--- !u!114 &4664883480484568496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3977861742532416431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 379e597b251ac8e42894fd87099849b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3977861742774597073
 GameObject:
   m_ObjectHideFlags: 0

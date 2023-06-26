@@ -7,6 +7,8 @@ public class SimpleUnitAttack : MonoBehaviour
     private UnitStats _stats;
     private UnitLogic _logic;
 
+    [SerializeField] Transform _transformToLookAt;
+
     private Coroutine _attackCorutine;
 
     private void Start()
@@ -14,7 +16,7 @@ public class SimpleUnitAttack : MonoBehaviour
         _stats = GetComponent<UnitStats>();
         _logic = GetComponent<UnitLogic>();
 
-        _logic.IsCameToEnemy.AddListener(StartAttack);
+        _logic.IsStartAttackingEnemy.AddListener(StartAttack);
         _logic.IsStopAttackingEnemy.AddListener(EndAttack);
     }
 
@@ -29,23 +31,17 @@ public class SimpleUnitAttack : MonoBehaviour
 
     private IEnumerator Attack(IDamagable enemy)
     {
-        if (enemy == null) yield return null;
+        yield return new WaitWhile(() => !_stats.IsReadyToAction());
 
-        bool isAttacking = true;
-        while (isAttacking)
+        try
         {
-            yield return new WaitWhile(() => !_stats.IsReadyToAction());
+            if (_transformToLookAt != null)
+                _transformToLookAt.LookAt(enemy.GetPosition());
 
-            try
-            {
-                transform.LookAt(enemy.GetPosition());
-                if (_stats.IsReadyToAction() && enemy.MakeDamage(_stats.GetDamageToAttack())) break;
-            }
-            catch
-            {
-                isAttacking = false;
-            }
+            enemy.MakeDamage(_stats.GetDamageToAttack());
         }
+        catch { }
+
         _logic.SetActiveFalse(true);
     }
 }

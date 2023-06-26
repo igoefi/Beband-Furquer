@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1438395462, guid: cd35f20be7ac0f142bb631ebe20d2ef0, type: 3}
+      propertyPath: _timeFirstForwardMoveming
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3631434756034121552, guid: cd35f20be7ac0f142bb631ebe20d2ef0, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -65,7 +69,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3918669388136493550, guid: cd35f20be7ac0f142bb631ebe20d2ef0, type: 3}
       propertyPath: m_Name
-      value: TankRocket
+      value: TankRocket Variant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cd35f20be7ac0f142bb631ebe20d2ef0, type: 3}

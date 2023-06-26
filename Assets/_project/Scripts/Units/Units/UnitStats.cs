@@ -23,10 +23,8 @@ public class UnitStats : Stats
         StartCoroutine(ResetReady());
         return _attackDamage;
     }
-    public float GetKD() =>
-        _timeKD;
-    public float GetEyeShot() =>
+    public float EyeShot =>
         _eyeShot;
-    public float GetAttackDistance() =>
+    public float AttackDistance =>
         _attackDistance;
 }

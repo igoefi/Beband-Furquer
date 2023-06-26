@@ -182,4 +182,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df692dbe166138247996fe0211cdfa4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _transformFromLookAt: {fileID: 0}
+  _transformFromLookAt: {fileID: 4255275539758375154}
