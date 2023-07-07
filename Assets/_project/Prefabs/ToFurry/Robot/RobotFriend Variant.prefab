@@ -12,6 +12,10 @@ PrefabInstance:
       value: 70
       objectReference: {fileID: 0}
     - target: {fileID: 1917853137581631573, guid: b35ad0e59261de94b929a5437819d4b2, type: 3}
+      propertyPath: _maxHP
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 1917853137581631573, guid: b35ad0e59261de94b929a5437819d4b2, type: 3}
       propertyPath: _timeKD
       value: 1.33
       objectReference: {fileID: 0}

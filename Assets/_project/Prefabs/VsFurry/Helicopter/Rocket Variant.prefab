@@ -94,7 +94,7 @@ MonoBehaviour:
   _speed: 1.5
   _maxDistanceToTarget: 1
   _explosionRadius: 5
-  _timeFirstForwardMoveming: 0.5
+  _timeFirstForwardMoveming: 0.1
   _explosionParticle: {fileID: 4153333895748851237}
 --- !u!1001 &4259548565439813059
 PrefabInstance:

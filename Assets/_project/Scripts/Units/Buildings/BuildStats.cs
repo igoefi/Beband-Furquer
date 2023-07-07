@@ -4,5 +4,10 @@ using UnityEngine;
 
 public class BuildStats : Stats
 {
-    [SerializeField] float _needPointToBuild;
+    [SerializeField] float _needPointsToBuild;
+
+    private void Start()
+    {
+        _HP = _maxHP;
+    }
 }

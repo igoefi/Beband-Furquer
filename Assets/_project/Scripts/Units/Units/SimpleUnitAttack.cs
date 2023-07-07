@@ -39,6 +39,7 @@ public class SimpleUnitAttack : MonoBehaviour
                 _transformToLookAt.LookAt(enemy.GetPosition());
 
             enemy.MakeDamage(_stats.GetDamageToAttack());
+            _logic.IsAttackEnemy.Invoke();
         }
         catch { }
 

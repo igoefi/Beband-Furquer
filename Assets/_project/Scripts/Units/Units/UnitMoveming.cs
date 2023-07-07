@@ -9,19 +9,21 @@ public class UnitMoveming : MonoBehaviour
     private UnitLogic _logic;
     private UnitStats _stats;
 
+    private Animator _anim;
+
     private void Start()
     {
         _agent = GetComponent<NavMeshAgent>();
-        _logic = GetComponent<UnitLogic>();
         _stats = GetComponent<UnitStats>();
+        _anim = GetComponent<Animator>();
 
-        _logic.IsCameToTarget.AddListener(MoveToTarget);
+        GetComponent<UnitLogic>().IsCameToTarget.AddListener(MoveToTarget);
     }
 
     private void MoveToTarget(Vector3 targetPos, bool isGoingToPoint)
     {
         _agent.SetDestination(targetPos);
 
-        _agent.stoppingDistance = isGoingToPoint ? 0 : _stats.AttackDistance;
+        _agent.stoppingDistance = isGoingToPoint ? 0.5f : _stats.AttackDistance;
     }
 }

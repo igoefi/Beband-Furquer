@@ -1582,8 +1582,16 @@ PrefabInstance:
       value: 10000
       objectReference: {fileID: 0}
     - target: {fileID: 1917853137581631573, guid: b35ad0e59261de94b929a5437819d4b2, type: 3}
+      propertyPath: _maxHP
+      value: 10000
+      objectReference: {fileID: 0}
+    - target: {fileID: 1917853137581631573, guid: b35ad0e59261de94b929a5437819d4b2, type: 3}
       propertyPath: _attackDistance
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2996145506585493957, guid: b35ad0e59261de94b929a5437819d4b2, type: 3}
+      propertyPath: m_AngularSpeed
+      value: 10000
       objectReference: {fileID: 0}
     - target: {fileID: 3961748424795110012, guid: b35ad0e59261de94b929a5437819d4b2, type: 3}
       propertyPath: _offset.z

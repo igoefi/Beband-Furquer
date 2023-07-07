@@ -16,6 +16,7 @@ public class UnitStats : Stats
     {
         _agent = GetComponent<NavMeshAgent>();
         _agent.speed = _speed;
+        _HP = _maxHP;
     }
 
     public float GetDamageToAttack()

@@ -5155,6 +5155,10 @@ PrefabInstance:
       value: 800
       objectReference: {fileID: 0}
     - target: {fileID: 1917853137581631573, guid: b35ad0e59261de94b929a5437819d4b2, type: 3}
+      propertyPath: _maxHP
+      value: 800
+      objectReference: {fileID: 0}
+    - target: {fileID: 1917853137581631573, guid: b35ad0e59261de94b929a5437819d4b2, type: 3}
       propertyPath: _speed
       value: 10
       objectReference: {fileID: 0}
@@ -5321,6 +5325,18 @@ MonoBehaviour:
   tracksSpeed: 0.2
   forwardSpeed: 0.1
   rotateSpeed: 0.1
+--- !u!114 &8752650686486294189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4334889181958941586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 379e597b251ac8e42894fd87099849b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &8213265463200034698 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4138654790052016480, guid: b35ad0e59261de94b929a5437819d4b2, type: 3}

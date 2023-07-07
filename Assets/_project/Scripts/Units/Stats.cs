@@ -10,7 +10,9 @@ public class Stats : MonoBehaviour, IDamagable
 
     [SerializeField] protected bool _isEnemy;
 
-    [SerializeField] protected float _HP;
+    [SerializeField] protected float _maxHP;
+    protected float _HP;
+
     [SerializeField] protected float _timeKD;
     protected bool _isReadyToAction = true;
 

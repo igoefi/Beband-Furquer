@@ -47,6 +47,7 @@ public class RocketAttack : MonoBehaviour
                     .GetComponent<Rocket>();
                 obj.SetTarget(enemy.GetPosition(), _stats.GetDamageToAttack(), _stats.IsEnemy());
             }
+            _logic.IsAttackEnemy.Invoke();
         }
         catch { }
 
