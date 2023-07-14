@@ -153,7 +153,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &106382114
 MonoBehaviour:
@@ -440,7 +440,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 81.012, y: 29.726, z: 175.407}
 --- !u!1 &749613793
 GameObject:
@@ -493,228 +493,6 @@ MonoBehaviour:
   _smooth: 0.005
   maxY: 50
   minY: 5.6
---- !u!1001 &837576907
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 100060, guid: fcb334eb247ae3e488abb081c847cf09, type: 3}
-      propertyPath: m_Name
-      value: Soldier_demo
-      objectReference: {fileID: 0}
-    - target: {fileID: 400060, guid: fcb334eb247ae3e488abb081c847cf09, type: 3}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 400060, guid: fcb334eb247ae3e488abb081c847cf09, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -3.7612817
-      objectReference: {fileID: 0}
-    - target: {fileID: 400060, guid: fcb334eb247ae3e488abb081c847cf09, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.0001001358
-      objectReference: {fileID: 0}
-    - target: {fileID: 400060, guid: fcb334eb247ae3e488abb081c847cf09, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -18.380177
-      objectReference: {fileID: 0}
-    - target: {fileID: 400060, guid: fcb334eb247ae3e488abb081c847cf09, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 400060, guid: fcb334eb247ae3e488abb081c847cf09, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400060, guid: fcb334eb247ae3e488abb081c847cf09, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400060, guid: fcb334eb247ae3e488abb081c847cf09, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400060, guid: fcb334eb247ae3e488abb081c847cf09, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400060, guid: fcb334eb247ae3e488abb081c847cf09, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400060, guid: fcb334eb247ae3e488abb081c847cf09, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: fcb334eb247ae3e488abb081c847cf09, type: 3}
---- !u!1 &837576908 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 100060, guid: fcb334eb247ae3e488abb081c847cf09, type: 3}
-  m_PrefabInstance: {fileID: 837576907}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &837576909
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 837576908}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 726325959c0cb064597e2f1bd5eb6b21, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerAnimator: {fileID: 0}
-  leftFootTransform: {fileID: 0}
-  rightFootTransform: {fileID: 0}
-  leftFootOrientationReference: {fileID: 0}
-  rightFootOrientationReference: {fileID: 0}
-  initialForwardVector: {x: 0, y: 0, z: 0}
-  lengthFromHeelToToes: 0.1
-  maxRotationAngle: 45
-  ankleHeightOffset: 0
-  enableIKPositioning: 1
-  enableIKRotating: 1
-  globalWeight: 1
-  leftFootWeight: 1
-  rightFootWeight: 1
-  smoothTime: 0.075
-  raySphereRadius: 0.05
-  rayCastRange: 2
-  groundLayers:
-    m_Bits: 0
-  ignoreTriggers: 1
-  leftFootRayStartHeight: 0.5
-  rightFootRayStartHeight: 0.5
-  enableFootLifting: 1
-  floorRange: 0
-  enableBodyPositioning: 1
-  crouchRange: 0.25
-  stretchRange: 0
-  giveWorldHeightOffset: 0
-  worldHeightOffset: 0
-  leftFootRayHitHeight: 0
-  rightFootRayHitHeight: 0
-  leftFootRayStartPosition: {x: 0, y: 0, z: 0}
-  rightFootRayStartPosition: {x: 0, y: 0, z: 0}
-  leftFootDirectionVector: {x: 0, y: 0, z: 0}
-  rightFootDirectionVector: {x: 0, y: 0, z: 0}
-  leftFootProjectionVector: {x: 0, y: 0, z: 0}
-  rightFootProjectionVector: {x: 0, y: 0, z: 0}
-  leftFootProjectedAngle: 0
-  rightFootProjectedAngle: 0
-  leftFootRayHitProjectionVector: {x: 0, y: 0, z: 0}
-  rightFootRayHitProjectionVector: {x: 0, y: 0, z: 0}
-  leftFootRayHitProjectedAngle: 0
-  rightFootRayHitProjectedAngle: 0
-  leftFootHeightOffset: 0
-  rightFootHeightOffset: 0
-  leftFootIKPositionBuffer: {x: 0, y: 0, z: 0}
-  rightFootIKPositionBuffer: {x: 0, y: 0, z: 0}
-  leftFootIKPositionTarget: {x: 0, y: 0, z: 0}
-  rightFootIKPositionTarget: {x: 0, y: 0, z: 0}
-  leftFootHeightLerpVelocity: 0
-  rightFootHeightLerpVelocity: 0
-  leftFootIKRotationBuffer: {x: 0, y: 0, z: 0}
-  rightFootIKRotationBuffer: {x: 0, y: 0, z: 0}
-  leftFootIKRotationTarget: {x: 0, y: 0, z: 0}
-  rightFootIKRotationTarget: {x: 0, y: 0, z: 0}
-  leftFootRotationLerpVelocity: {x: 0, y: 0, z: 0}
-  rightFootRotationLerpVelocity: {x: 0, y: 0, z: 0}
-  helperTextStyle:
-    m_Name: 
-    m_Normal: {m_Background: {fileID: 0}, m_ScaledBackgrounds: []
-, m_TextColor:
-        r: 0
-        g: 0
-        b: 0
-        a: 1
-}
-    m_Hover: {m_Background: {fileID: 0}, m_ScaledBackgrounds: []
-, m_TextColor:
-        r: 0
-        g: 0
-        b: 0
-        a: 1
-}
-    m_Active: {m_Background: {fileID: 0}, m_ScaledBackgrounds: []
-, m_TextColor:
-        r: 0
-        g: 0
-        b: 0
-        a: 1
-}
-    m_Focused: {m_Background: {fileID: 0}, m_ScaledBackgrounds: []
-, m_TextColor:
-        r: 0
-        g: 0
-        b: 0
-        a: 1
-}
-    m_OnNormal: {m_Background: {fileID: 0}, m_ScaledBackgrounds: []
-, m_TextColor:
-        r: 0
-        g: 0
-        b: 0
-        a: 1
-}
-    m_OnHover: {m_Background: {fileID: 0}, m_ScaledBackgrounds: []
-, m_TextColor:
-        r: 0
-        g: 0
-        b: 0
-        a: 1
-}
-    m_OnActive: {m_Background: {fileID: 0}, m_ScaledBackgrounds: []
-, m_TextColor:
-        r: 0
-        g: 0
-        b: 0
-        a: 1
-}
-    m_OnFocused: {m_Background: {fileID: 0}, m_ScaledBackgrounds: []
-, m_TextColor:
-        r: 0
-        g: 0
-        b: 0
-        a: 1
-}
-    m_Border:
-      m_Left: 0
-      m_Right: 0
-      m_Top: 0
-      m_Bottom: 0
-    m_Margin:
-      m_Left: 0
-      m_Right: 0
-      m_Top: 0
-      m_Bottom: 0
-    m_Padding:
-      m_Left: 0
-      m_Right: 0
-      m_Top: 0
-      m_Bottom: 0
-    m_Overflow:
-      m_Left: 0
-      m_Right: 0
-      m_Top: 0
-      m_Bottom: 0
-    m_Font: {fileID: 0}
-    m_FontSize: 0
-    m_FontStyle: 0
-    m_Alignment: 0
-    m_WordWrap: 0
-    m_RichText: 1
-    m_TextClipping: 0
-    m_ImagePosition: 0
-    m_ContentOffset: {x: 0, y: 0}
-    m_FixedWidth: 0
-    m_FixedHeight: 0
-    m_StretchWidth: 1
-    m_StretchHeight: 0
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -1101,5 +879,5 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
