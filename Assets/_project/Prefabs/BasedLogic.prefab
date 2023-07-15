@@ -147,6 +147,7 @@ GameObject:
   - component: {fileID: 5692519973618844414}
   - component: {fileID: 9137259111424343543}
   - component: {fileID: 9068442352739692805}
+  - component: {fileID: 5379733016450007675}
   m_Layer: 0
   m_Name: BasedLogic
   m_TagString: Untagged
@@ -322,3 +323,16 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5379733016450007675
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8411751347696301432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a2ed360c0014044d99f3a19b9114147, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _particle: {fileID: 100000, guid: 57ff52a6b9d134c9689be872547ab590, type: 3}

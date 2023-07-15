@@ -1807,19 +1807,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1917853137581631573, guid: b35ad0e59261de94b929a5437819d4b2, type: 3}
       propertyPath: _timeKD
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1917853137581631573, guid: b35ad0e59261de94b929a5437819d4b2, type: 3}
       propertyPath: _eyeShot
       value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 1917853137581631573, guid: b35ad0e59261de94b929a5437819d4b2, type: 3}
+      propertyPath: _maxTimeKD
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1917853137581631573, guid: b35ad0e59261de94b929a5437819d4b2, type: 3}
+      propertyPath: _minTimeKD
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1917853137581631573, guid: b35ad0e59261de94b929a5437819d4b2, type: 3}
       propertyPath: _attackDamage
-      value: 120
+      value: 115
       objectReference: {fileID: 0}
     - target: {fileID: 1917853137581631573, guid: b35ad0e59261de94b929a5437819d4b2, type: 3}
       propertyPath: _attackDistance
       value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 1917853137581631573, guid: b35ad0e59261de94b929a5437819d4b2, type: 3}
+      propertyPath: _maxAttackDamage
+      value: 130
+      objectReference: {fileID: 0}
+    - target: {fileID: 1917853137581631573, guid: b35ad0e59261de94b929a5437819d4b2, type: 3}
+      propertyPath: _minAttackDamage
+      value: 110
       objectReference: {fileID: 0}
     - target: {fileID: 2881466948670523417, guid: b35ad0e59261de94b929a5437819d4b2, type: 3}
       propertyPath: _clip

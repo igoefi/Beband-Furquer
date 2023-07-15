@@ -6,14 +6,15 @@ using UnityEngine.Events;
 
 public class Stats : MonoBehaviour, IDamagable
 {
-    public UnityEvent IsMeAttacking { get; private set; } = new();
+    public UnityEvent<float> IsMeAttacking { get; private set; } = new();
 
     [SerializeField] protected bool _isEnemy;
 
     [SerializeField] protected float _maxHP;
     protected float _HP;
 
-    [SerializeField] protected float _timeKD;
+    [SerializeField] protected float _minTimeKD;
+    [SerializeField] protected float _maxTimeKD;
     protected bool _isReadyToAction = true;
 
     public bool IsEnemy() =>
@@ -28,7 +29,7 @@ public class Stats : MonoBehaviour, IDamagable
                 Destroy(gameObject);
             return true;
         }
-        IsMeAttacking.Invoke();
+        IsMeAttacking.Invoke(damage);
         return false;
     }
 
@@ -41,7 +42,7 @@ public class Stats : MonoBehaviour, IDamagable
     protected IEnumerator ResetReady()
     {
         _isReadyToAction = false;
-        yield return new WaitForSeconds(_timeKD);
+        yield return new WaitForSeconds(Random.Range(_minTimeKD, _maxTimeKD));
         _isReadyToAction = true;
     }
 

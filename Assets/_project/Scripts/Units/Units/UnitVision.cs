@@ -14,7 +14,7 @@ public class UnitVision : MonoBehaviour
     {
         _stats = GetComponent<UnitStats>();
         _distance = _stats.EyeShot;
-        GetComponent<UnitStats>().IsMeAttacking.AddListener(ReactionToAttack);
+        GetComponent<UnitStats>().IsMeAttacking.AddListener((_) => ReactionToAttack());
     }
 
     void FixedUpdate()

@@ -41,11 +41,12 @@ public class RocketAttack : MonoBehaviour
             if (_transformToLookAt != null)
                 _transformToLookAt.LookAt(enemy.GetPosition());
 
+            float damage = _stats.GetDamageToAttack();
             foreach (var place in _placesForRockets)
             {
                 var obj = Instantiate(_rocketPrefab.gameObject, place.position, place.rotation, transform.parent)
                     .GetComponent<Rocket>();
-                obj.SetTarget(enemy.GetPosition(), _stats.GetDamageToAttack(), _stats.IsEnemy());
+                obj.SetTarget(enemy.GetPosition(), damage, _stats.IsEnemy());
             }
             _logic.IsAttackEnemy.Invoke();
         }
