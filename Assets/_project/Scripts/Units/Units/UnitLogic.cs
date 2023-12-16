@@ -9,9 +9,6 @@ public class UnitLogic : MonoBehaviour
     public UnityEvent<Vector3, bool> IsCameToTarget { get; private set; } = new();
     public UnityEvent IsReachedToTarget { get; private set; } = new();
 
-    public UnityEvent<BuildStats> IsStartBuilding { get; private set; } = new();
-    public UnityEvent IsStopBuilding { get; private set; } = new();
-
     public UnityEvent<IDamagable> IsStartAttackingEnemy { get; private set; } = new();
     public UnityEvent IsAttackEnemy { get; private set; } = new();
     public UnityEvent IsStopAttackingEnemy { get; private set; } = new();
@@ -19,7 +16,6 @@ public class UnitLogic : MonoBehaviour
     private NavMeshAgent _agent;
     private UnitStats _stats;
 
-    private BuildStats _friendBuild;
     private IDamagable _enemy;
 
     private bool _isActive = false;
@@ -33,7 +29,7 @@ public class UnitLogic : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (!_isActive && !_isCameToPoint && _enemy.IsUnityNull() && _friendBuild.IsUnityNull())
+        if (!_isActive && !_isCameToPoint && _enemy.IsUnityNull())
         {
             SetVisionEnabled(true);
             return;
@@ -44,20 +40,16 @@ public class UnitLogic : MonoBehaviour
             if (_isActive)
                 SetActiveFalse(false);
 
-            if (_friendBuild != null)
-                IsCameToTarget.Invoke(_friendBuild.GetPosition(), false);
-            else if (_enemy != null)
+            if (_enemy != null)
                 IsCameToTarget.Invoke(_enemy.GetPosition(), false);
         }
         else
         {
             if (_isActive) return;
-            _isActive = true;
+                _isActive = true;
 
             IsReachedToTarget.Invoke();
-            if (_friendBuild != null)
-                IsStartBuilding.Invoke(_friendBuild);
-            else
+            if (_enemy != null)
                 IsStartAttackingEnemy.Invoke(_enemy);
         }
     }
@@ -76,7 +68,6 @@ public class UnitLogic : MonoBehaviour
         _agent.SetDestination(build.transform.position);
         _agent.stoppingDistance = _stats.AttackDistance;
         _enemy = null;
-        _friendBuild = build;
         SetActiveFalse(false);
     }
 
@@ -85,7 +76,6 @@ public class UnitLogic : MonoBehaviour
         _agent.SetDestination(enemy.GetPosition());
         _agent.stoppingDistance = _stats.AttackDistance;
         _enemy = enemy;
-        _friendBuild = null;
         SetActiveFalse(false);
     }
 
@@ -93,13 +83,9 @@ public class UnitLogic : MonoBehaviour
     {
         _isActive = false;
         _isCameToPoint = false;
-        IsStopBuilding.Invoke();
         IsStopAttackingEnemy.Invoke();
         if (isResetTargets)
-        {
             _enemy = null;
-            _friendBuild = null;
-        }
     }
 
     public void SetVisionEnabled(bool isEnabled) =>

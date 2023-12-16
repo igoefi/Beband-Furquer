@@ -32,12 +32,16 @@ public class PuroAttack : MonoBehaviour
     {
         yield return new WaitWhile(() => !_stats.IsReadyToAction());
 
-        _stats.GetDamageToAttack();
+        try
+        {
+            _stats.GetDamageToAttack();
 
-        if (_transformFromLookAt != null)
-            _transformFromLookAt.LookAt(enemy.GetPosition());
+            if (_transformFromLookAt != null)
+                _transformFromLookAt.LookAt(enemy.GetPosition());
 
-        enemy?.ChangeIsEnemy();
+            enemy.ChangeIsEnemy();
+        }
+        catch { }
 
         _logic.SetActiveFalse(true);
     }
